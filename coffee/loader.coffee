@@ -2,6 +2,7 @@ class Loader
   constructor: (arrOfAssets, onComplete) ->
     this.assets = []
     this.all = arrOfAssets.length
+    that = this
     for assetString in arrOfAssets
       extension = assetString.substring(assetString.lastIndexOf('.') + 1).toLowerCase()
       if extension == 'wav'
@@ -13,7 +14,6 @@ class Loader
         asset = new Image
         asset.src = assetString
 
-      that = this
       asset.onload = (el) ->
         that.assets.push this
         if that.assets.length == that.all
